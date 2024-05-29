@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<h2>{{ user.username }}'s Profile</h2>
+<p>First name: {{ user.first_name }}</p>
+<p>Last name: {{ user.last_name }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Bio: {{ user.profile.bio }}</p>
+<a href="{% url 'profile_update' %}">Edit Profile</a>
+<form method="post" action="{% url 'profile_delete' %}" style="margin-top: 10px;">
+    {% csrf_token %}
+    <button type="submit">Delete Profile</button>
+</form>
+{% endblock %}
